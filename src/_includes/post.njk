@@ -1,0 +1,16 @@
+---
+layout: base.njk
+navKey: journal
+ogType: article
+---
+<article>
+  <header class="post-hero"><div class="wrap">
+    <a class="label" href="/journal/" style="text-decoration:none">← The Growth Journal</a>
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="lede" style="margin-top:22px">{{ description }}</p>{% endif %}
+    <div class="post-meta"><span class="cat">{{ category }}</span><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time>{% if author %}<span>{{ author }}</span>{% endif %}</div>
+  </div></header>
+  {% if cover %}<div class="post-cover"><img src="{{ cover }}" alt="{{ cover_alt or '' }}"></div>{% endif %}
+  <div class="prose">{{ content | safe }}</div>
+</article>
+<section class="cta"><canvas data-orbit="cta" aria-hidden="true"></canvas><div class="wrap"><div class="label">[ Let's talk ]</div><h2 style="max-width:14ch">Tell us where you want to grow.</h2><div class="btn-row"><a class="btn btn-copper" href="/book/">Book a free strategy call <span class="arrow">→</span></a></div></div></section>

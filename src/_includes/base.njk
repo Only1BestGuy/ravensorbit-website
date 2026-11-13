@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+{% set canonical = site.url + page.url %}<link rel="canonical" href="{{ canonical }}">
+{% if noindex or (page.url == "/journal/" and not collections.post.length) %}<meta name="robots" content="noindex,follow">{% endif %}
+<meta name="theme-color" content="#0C140E">
+<meta property="og:site_name" content="RavensOrbit Digital">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:image" content="{{ site.url }}{{ ogImage or '/assets/img/og-image.png' }}">
+<meta property="og:locale" content="en_NG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ site.url }}{{ ogImage or '/assets/img/og-image.png' }}">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+{% if schema %}<script type="application/ld+json">{{ site.schema | dump | safe }}</script>{% endif %}
+{% if articleSchema %}<script type="application/ld+json">{{ articleSchema | dump | safe }}</script>{% endif %}
+{% if identityWidget %}<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>{% endif %}
+</head>
+<body>
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="RavensOrbit Digital home"><img class="white" src="/assets/img/logo-white.png" alt="RODA, RavensOrbit Digital" width="127" height="30"><img class="ink" src="/assets/img/logo-ink.png" alt="" width="127" height="30"></a>
+    <ul class="nav-links"><li><a href="/"{% if navKey == "home" %} aria-current="page"{% endif %}>Home</a></li><li><a href="/about/"{% if navKey == "about" %} aria-current="page"{% endif %}>About</a></li><li><a href="/services/"{% if navKey == "services" %} aria-current="page"{% endif %}>Services</a></li><li><a href="/pricing/"{% if navKey == "pricing" %} aria-current="page"{% endif %}>Pricing</a></li><li><a href="/work/"{% if navKey == "work" %} aria-current="page"{% endif %}>Work</a></li><li>{% if collections.post.length %}<a href="/journal/"{% if navKey == "journal" %} aria-current="page"{% endif %}>Journal</a>{% endif %}</li><li><a href="/team/"{% if navKey == "team" %} aria-current="page"{% endif %}>Team</a></li></ul>
+    <a class="btn btn-nav" href="/book/">Book a free strategy call</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu"><a href="/"{% if navKey == "home" %} aria-current="page"{% endif %}>Home</a><a href="/about/"{% if navKey == "about" %} aria-current="page"{% endif %}>About</a><a href="/services/"{% if navKey == "services" %} aria-current="page"{% endif %}>Services</a><a href="/pricing/"{% if navKey == "pricing" %} aria-current="page"{% endif %}>Pricing</a><a href="/work/"{% if navKey == "work" %} aria-current="page"{% endif %}>Work</a>{% if collections.post.length %}<a href="/journal/"{% if navKey == "journal" %} aria-current="page"{% endif %}>Journal</a>{% endif %}<a href="/team/"{% if navKey == "team" %} aria-current="page"{% endif %}>Team</a><a class="btn btn-copper" href="/book/">Book a free strategy call <span class="arrow">→</span></a></div>
+<main>
+{{ content | safe }}
+</main>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div><img src="/assets/img/logo-white.png" alt="RODA, RavensOrbit Digital" style="height:30px;width:auto" width="127" height="30"><p class="tag">We connect the parts of marketing that usually work apart.</p></div>
+      <div><div class="h">Company</div><ul><li><a href="/about/">About</a></li><li><a href="/services/">Services</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/work/">Work</a></li>{% if collections.post.length %}<li><a href="/journal/">Journal</a></li>{% endif %}<li><a href="/team/">Team</a></li><li><a href="/book/">Book a call</a></li></ul></div>
+      <div><div class="h">Contact</div><ul><li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li><li class="muted">Lagos, Nigeria</li>{% for s in site.social %}<li><a href="{{ s.url }}" rel="me noopener" target="_blank">{{ s.name }}</a></li>{% endfor %}</ul></div>
+    </div>
+    <div class="bottom"><span>RavensOrbit Digital © {{ site.year }}</span><span>Marketing agency in Lagos, Nigeria</span></div>
+  </div>
+</footer>
+<button class="totop" id="totop" aria-label="Back to top"><svg viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="25" r="23" fill="none" stroke="rgba(247,245,236,.18)" stroke-width="1.5"/><circle id="ringP" cx="25" cy="25" r="23" fill="none" stroke="#C68552" stroke-width="1.5" stroke-dasharray="144.5" stroke-dashoffset="144.5" transform="rotate(-90 25 25)"/></svg><span aria-hidden="true">↑</span></button>
+<script src="/assets/site.js"></script>
+{% if identityWidget %}<script>if(window.netlifyIdentity){netlifyIdentity.on("init",u=>{if(!u){netlifyIdentity.on("login",()=>{document.location.href="/admin/"})}})}</script>{% endif %}
+</body>
+</html>

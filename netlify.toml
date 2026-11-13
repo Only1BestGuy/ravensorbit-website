@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[redirects]]
+  from = "https://www.ravensorbit.com/*"
+  to = "https://ravensorbit.com/:splat"
+  status = 301
+  force = true

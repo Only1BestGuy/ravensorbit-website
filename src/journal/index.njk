@@ -1,0 +1,26 @@
+---
+layout: "base.njk"
+title: "The Growth Journal | RavensOrbit Digital"
+description: "What we are learning about marketing, customers and growth in Nigeria and across Africa, written by the people doing the work."
+navKey: "journal"
+permalink: "/journal/"
+---
+<header class="phero"><canvas data-orbit="soft" aria-hidden="true"></canvas><div class="wrap"><div class="label">[ Journal ]</div><div><h1 class="fx">The Growth Journal</h1><p class="lede fx">What we're learning about marketing, customers and growth in Africa. Written by the people doing the work.</p></div></div></header>
+  <section>
+    <div class="wrap">
+      {% set posts = collections.post | reverse %}{% if posts.length %}
+      <div class="filters" id="journalFilters" role="group" aria-label="Filter articles">
+        <button type="button" data-c="all" aria-pressed="true">All</button>{% for c in site.categories %}<button type="button" data-c="{{ c }}" aria-pressed="false">{{ c }}</button>{% endfor %}
+      </div>
+      <div class="journal journal-full">{% for post in posts %}{% include "postcard.njk" %}{% endfor %}</div>
+      {% else %}
+      <div class="journal-empty"><span class="label">[ Coming soon ]</span><h2>First articles are on the way.</h2><p class="muted">Subscribe below and we'll send them to you as they're published.</p></div>
+      {% endif %}
+    </div>
+  </section>
+  <section class="light">
+    <div class="wrap news">
+      <div><div class="label">[ Newsletter ]</div><h2 class="fx" style="margin-top:14px">One useful idea, twice a month.</h2><p class="lede muted" style="margin-top:16px">No round-ups, no recycled tips.</p></div>
+      <form name="newsletter" method="POST" action="/thanks/?f=newsletter" data-netlify="true" netlify-honeypot="bot-field"><input type="hidden" name="form-name" value="newsletter"><p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p><div class="field-row"><label for="newsEmail" class="hp">Email</label><input id="newsEmail" name="email" type="email" placeholder="you@company.com" required autocomplete="email"><button class="btn btn-copper" type="submit">Subscribe</button></div></form>
+    </div>
+  </section>

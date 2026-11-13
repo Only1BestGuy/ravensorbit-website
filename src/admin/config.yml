@@ -1,0 +1,30 @@
+backend:
+  name: git-gateway
+  branch: main
+
+site_url: https://ravensorbit.com
+display_url: https://ravensorbit.com
+logo_url: /assets/img/logo-color.png
+locale: en
+
+media_folder: src/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: journal
+    label: Journal posts
+    label_singular: Journal post
+    folder: src/journal/posts
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} · {{category}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string, hint: "Shown as the article headline. Aim for under 60 characters if you can." }
+      - { label: "Short description (for Google)", name: description, widget: text, hint: "One or two sentences, about 150 characters. Shows under your link on Google and when shared." }
+      - { label: Publish date, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "D MMM YYYY", time_format: false }
+      - { label: Category, name: category, widget: select, options: ["Performance", "Search & AI", "Conversion", "Lifecycle", "Brand & Strategy"] }
+      - { label: Author, name: author, widget: select, required: false, options: ["Okugboye Olayinka D.", "Roqeebat Alao", "RavensOrbit Digital"], default: "RavensOrbit Digital" }
+      - { label: "Cover image (optional)", name: cover, widget: image, required: false, hint: "Landscape works best, about 1600 × 1000. Leave empty to use a branded orbit cover." }
+      - { label: "Cover image description", name: cover_alt, widget: string, required: false, hint: "Describe the image in a few words for screen readers and Google." }
+      - { label: Article, name: body, widget: markdown }
