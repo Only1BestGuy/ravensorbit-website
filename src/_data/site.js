@@ -4,7 +4,12 @@ export default {
   url, email,
   year: new Date().getFullYear(),
   categories: ["Performance", "Search & AI", "Conversion", "Lifecycle", "Brand & Strategy"],
-  social: [],
+  // Social links in the footer. Replace each "#" with the full profile link, e.g. "https://www.instagram.com/ravensorbit".
+  social: [
+    { name: "Instagram", url: "#" },
+    { name: "LinkedIn", url: "#" },
+    { name: "X", url: "#" }
+  ],
   schema: {
     "@context": "https://schema.org",
     "@graph": [

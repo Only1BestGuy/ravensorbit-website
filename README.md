@@ -9,6 +9,6 @@ Built with Eleventy, hosted on Netlify.
 ## Where things live
 - Page copy: `src/*.njk` (home is `src/index.njk`)
 - Styles: `src/assets/site.css` · Scripts: `src/assets/site.js`
-- Site-wide settings (domain, email, social links): `src/_data/site.js`
+- Site-wide settings (domain, email, **social links**): `src/_data/site.js` — edit on GitHub, commit, and Netlify republishes automatically
 - Journal posts: `src/journal/posts/` (managed by the editor at /admin)
 - Form submissions: Netlify → Forms (email notifications go to the address set there)
